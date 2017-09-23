@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edas.orm.mapper.TbPlaceMapper" >
+  <resultMap id="BaseResultMap" type="com.edas.orm.pojo.TbPlace" >
+    <id column="place_id" property="placeId" jdbcType="INTEGER" />
+    <result column="place_name" property="placeName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    place_id, place_name
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.edas.orm.pojo.TbPlaceExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_place
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_place
+    where place_id = #{placeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_place
+    where place_id = #{placeId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.edas.orm.pojo.TbPlaceExample" >
+    delete from tb_place
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.edas.orm.pojo.TbPlace" >
+    insert into tb_place (place_id, place_name)
+    values (#{placeId,jdbcType=INTEGER}, #{placeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.edas.orm.pojo.TbPlace" >
+    insert into tb_place
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="placeId != null" >
+        place_id,
+      </if>
+      <if test="placeName != null" >
+        place_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="placeId != null" >
+        #{placeId,jdbcType=INTEGER},
+      </if>
+      <if test="placeName != null" >
+        #{placeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.edas.orm.pojo.TbPlaceExample" resultType="java.lang.Integer" >
+    select count(*) from tb_place
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_place
+    <set >
+      <if test="record.placeId != null" >
+        place_id = #{record.placeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.placeName != null" >
+        place_name = #{record.placeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_place
+    set place_id = #{record.placeId,jdbcType=INTEGER},
+      place_name = #{record.placeName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.edas.orm.pojo.TbPlace" >
+    update tb_place
+    <set >
+      <if test="placeName != null" >
+        place_name = #{placeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where place_id = #{placeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.edas.orm.pojo.TbPlace" >
+    update tb_place
+    set place_name = #{placeName,jdbcType=VARCHAR}
+    where place_id = #{placeId,jdbcType=INTEGER}
+  </update>
+</mapper>
