@@ -1,1 +1,7 @@
-0:0:0:0:0:0:0:1 - - [24/Sep/2017:16:02:01 +0800] "GET /edas/course/getCourseById/ed611951469 HTTP/1.1" 200 145 http-bio-8080-exec-1 1486
+0:0:0:0:0:0:0:1 - - [24/Sep/2017:16:12:03 +0800] "GET /edas/course/getCourseById/ed611951469 HTTP/1.1" 200 145 http-bio-8080-exec-1 1034
+127.0.0.1 - - [24/Sep/2017:16:23:57 +0800] "POST /edas/instructor/validate HTTP/1.1" 200 217 http-bio-8080-exec-3 210
+0:0:0:0:0:0:0:1 - - [24/Sep/2017:16:36:54 +0800] "GET /edas/courseRecord/findCoursesByInstructorId/ins210202147 HTTP/1.1" 200 4037 http-bio-8080-exec-5 132
+0:0:0:0:0:0:0:1 - - [24/Sep/2017:16:37:22 +0800] "GET /edas/courseRecord/findCoursesByInstructorId/ins235616151 HTTP/1.1" 200 4037 http-bio-8080-exec-6 90
+0:0:0:0:0:0:0:1 - - [24/Sep/2017:16:37:40 +0800] "GET /edas/courseRecord/findCoursesByInstructorId/ins315927474 HTTP/1.1" 200 255 http-bio-8080-exec-7 325
+127.0.0.1 - - [24/Sep/2017:16:44:00 +0800] "POST /edas/courseRecord/findStudentsByInstructorIdAndCourseId HTTP/1.1" 200 4238 http-bio-8080-exec-9 2653
+0:0:0:0:0:0:0:1 - - [24/Sep/2017:16:48:53 +0800] "GET /edas/courseRecord/getCourseRecordsByStudentId/stu17912625 HTTP/1.1" 200 626 http-bio-8080-exec-1 124
