@@ -76,9 +76,9 @@
 				<configuration>
 					<port>8080</port>
 					<path>/</path>
-					<url>http://localhost:8080/manager/text</url>
+					<url>http://114.67.140.252:8080/manager/text</url>
 					<username>tomcat</username>
-					<password>tomcat</password>
+					<password>neu_work_666</password>
 				</configuration>
 			</plugin>
 		</plugins>
