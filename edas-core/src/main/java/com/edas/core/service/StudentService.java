@@ -11,4 +11,6 @@ public interface StudentService {
 	
 	public List<TbStudent> getStudents();
 	
+	public List<TbStudent> getStudentsByIds(List<String> studentIds);
+	
 }

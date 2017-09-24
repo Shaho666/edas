@@ -33,4 +33,12 @@ public class CourseServiceImpl implements CourseService {
 		return null;
 	}
 
+	@Override
+	public List<TbCourse> getCourses() {
+		
+		TbCourseExample example = new TbCourseExample();
+		
+		return courseMapper.selectByExample(example);
+	}
+
 }

@@ -6,13 +6,17 @@ com\edas\core\pojo\Student.class
 com\edas\core\service\impl\CourseServiceImpl.class
 com\edas\core\controller\StudentController.class
 com\edas\core\controller\InstructorController.class
+com\edas\core\service\impl\CourseTypeServiceImpl.class
 com\edas\core\service\impl\CourseRecordImpl.class
 com\edas\core\service\CourseService.class
 com\edas\core\service\impl\InstructorServiceImpl.class
 com\edas\core\service\PlaceService.class
 com\edas\core\controller\CourseRecordController.class
 com\edas\core\pojo\Instructor.class
+com\edas\core\service\CourseTypeService.class
+com\edas\core\service\ClassService.class
 com\edas\core\controller\CourseController.class
+com\edas\core\service\impl\ClassServiceImpl.class
 com\edas\core\service\StudentService.class
 com\edas\core\pojo\CourseRecord.class
 com\edas\core\service\CourseRecordService.class

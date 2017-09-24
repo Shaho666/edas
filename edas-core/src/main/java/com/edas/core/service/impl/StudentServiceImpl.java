@@ -11,6 +11,7 @@ import com.edas.core.service.StudentService;
 import com.edas.orm.mapper.TbStudentMapper;
 import com.edas.orm.pojo.TbStudent;
 import com.edas.orm.pojo.TbStudentExample;
+import com.edas.orm.pojo.TbStudentExample.Criteria;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -39,6 +40,22 @@ public class StudentServiceImpl implements StudentService {
 		TbStudentExample example = new TbStudentExample();
 		List<TbStudent> list = studentMapper.selectByExample(example);
 
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+
+		return null;
+	}
+
+	@Override
+	public List<TbStudent> getStudentsByIds(List<String> studentIds) {
+
+		TbStudentExample example = new TbStudentExample();
+
+		Criteria criteria = example.createCriteria();
+		criteria.andStudentIdIn(studentIds);
+
+		List<TbStudent> list = studentMapper.selectByExample(example);
 		if (list != null && list.size() > 0) {
 			return list;
 		}

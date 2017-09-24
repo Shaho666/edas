@@ -1,14 +1,27 @@
 package com.edas.core.pojo;
 
+import com.edas.orm.pojo.TbStudent;
+
 public class Student {
 
-    private String studentId;
+	private String studentId;
 
-    private String studentPassword;
+	private String className;
 
-    private String className;
+	private String studentName;
 
-    private String studentName;
+	public Student() {
+	}
+
+	public Student(TbStudent student, String className) {
+
+		this.studentId = student.getStudentId();
+
+		this.setClassName(className);
+
+		this.setStudentName(student.getStudentName());
+
+	}
 
 	public String getStudentId() {
 		return studentId;
@@ -16,14 +29,6 @@ public class Student {
 
 	public void setStudentId(String studentId) {
 		this.studentId = studentId;
-	}
-
-	public String getStudentPassword() {
-		return studentPassword;
-	}
-
-	public void setStudentPassword(String studentPassword) {
-		this.studentPassword = studentPassword;
 	}
 
 	public String getClassName() {
@@ -69,8 +74,7 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [studentId=" + studentId + ", studentPassword=" + studentPassword + ", className=" + className
-				+ ", studentName=" + studentName + "]";
+		return "Student [studentId=" + studentId + ", className=" + className + ", studentName=" + studentName + "]";
 	}
-	
+
 }

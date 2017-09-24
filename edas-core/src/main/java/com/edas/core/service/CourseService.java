@@ -8,4 +8,6 @@ public interface CourseService {
 	
 	public List<TbCourse> getCoursesByCourseIds(List<String> courseIds);
 	
+	public List<TbCourse> getCourses();
+	
 }

@@ -1,14 +1,31 @@
 package com.edas.core.pojo;
 
+import com.edas.orm.pojo.TbCourse;
+
 public class Course {
 
 	private String courseId;
 
-    private Double courseDuration;
+	private Double courseDuration;
 
-    private String courseType;
+	private String courseType;
 
-    private String courseName;
+	private String courseName;
+
+	public Course() {
+	}
+
+	public Course(TbCourse course, String courseType) {
+
+		this.courseId = course.getCourseId();
+
+		this.courseDuration = course.getCourseDuration();
+
+		this.courseType = courseType;
+
+		this.courseName = course.getCourseName();
+
+	}
 
 	public String getCourseId() {
 		return courseId;
@@ -72,5 +89,5 @@ public class Course {
 		return "Course [courseId=" + courseId + ", courseDuration=" + courseDuration + ", courseType=" + courseType
 				+ ", courseName=" + courseName + "]";
 	}
-	
+
 }
