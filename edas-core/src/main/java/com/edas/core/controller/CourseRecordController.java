@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.edas.commons.pojo.JsonResult;
 import com.edas.commons.utils.ExceptionUtil;
 import com.edas.core.pojo.Course;
+import com.edas.core.pojo.CourseRecord;
 import com.edas.core.pojo.Student;
 import com.edas.core.service.ClassService;
 import com.edas.core.service.CourseRecordService;
@@ -86,8 +87,8 @@ public class CourseRecordController {
 		try {
 			List<String> studentIds = new ArrayList<String>();
 
-			List<TbCourseRecord> courseRecords = courseRecordService.getCourseRecordByInstructorIdAndCourseId(instructorId,
-					courseId);
+			List<TbCourseRecord> courseRecords = courseRecordService
+					.getCourseRecordByInstructorIdAndCourseId(instructorId, courseId);
 			for (TbCourseRecord tbCourseRecord : courseRecords) {
 				studentIds.add(tbCourseRecord.getStudentId());
 			}
@@ -97,15 +98,36 @@ public class CourseRecordController {
 			List<TbStudent> tbStudents = studentService.getStudentsByIds(studentIds);
 			for (TbStudent tbStudent : tbStudents) {
 				Student student = new Student(tbStudent, classService.getClassNameById(tbStudent.getClassId()));
-			    students.add(student);
+				students.add(student);
 			}
 
 			return JsonResult.ok(students);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JsonResult.build(500, ExceptionUtil.getStackTrace(e));
 		}
 	}
 
+	@RequestMapping("/getCourseRecordsByStudentId/{studentId}")
+	@ResponseBody
+	public JsonResult getCourseRecordsByStudentId(@PathVariable("studentId") String studentId) {
+
+		try {
+
+			List<CourseRecord> courseRecords = new ArrayList<CourseRecord>();
+
+			List<TbCourseRecord> tbCourseRecords = courseRecordService.getCourseRecordByStudentId(studentId);
+			for (TbCourseRecord tbCourseRecord : tbCourseRecords) {
+				CourseRecord courseRecord = new CourseRecord(tbCourseRecord);
+				courseRecords.add(courseRecord);
+			}
+
+			return JsonResult.ok(courseRecords);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResult.build(500, ExceptionUtil.getStackTrace(e));
+		}
+	}
 }

@@ -47,4 +47,15 @@ public class InstructorServiceImpl implements InstructorService {
 		return null;
 	}
 
+	@Override
+	public String getInstructorNameById(String instructorId) {
+
+		TbInstructor instructor = instructorMapper.selectByPrimaryKey(instructorId);
+		if (instructor != null) {
+			return instructor.getInstructorName();
+		}
+
+		return null;
+	}
+
 }

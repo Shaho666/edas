@@ -1,14 +1,31 @@
 package com.edas.core.pojo;
 
+import com.edas.orm.pojo.TbCourseRecord;
+
 public class CourseRecord {
 
 	private String courseRecordId;
 
-    private String courseId;
+	private String courseName;
 
-    private String instructorId;
-    
-    private String studentId;
+	private String instructorName;
+
+	private String studentId;
+
+	public CourseRecord() {
+	}
+
+	public CourseRecord(TbCourseRecord courseRecord) {
+
+		this.courseRecordId = courseRecord.getCourseRecordId();
+
+		this.courseName = courseRecord.getCourseId();
+
+		this.instructorName = courseRecord.getInstructorId();
+
+		this.studentId = courseRecord.getStudentId();
+
+	}
 
 	public String getCourseRecordId() {
 		return courseRecordId;
@@ -19,19 +36,19 @@ public class CourseRecord {
 	}
 
 	public String getCourseId() {
-		return courseId;
+		return courseName;
 	}
 
 	public void setCourseId(String courseId) {
-		this.courseId = courseId;
+		this.courseName = courseId;
 	}
 
 	public String getInstructorId() {
-		return instructorId;
+		return instructorName;
 	}
 
 	public void setInstructorId(String instructorId) {
-		this.instructorId = instructorId;
+		this.instructorName = instructorId;
 	}
 
 	public String getStudentId() {
@@ -69,8 +86,8 @@ public class CourseRecord {
 
 	@Override
 	public String toString() {
-		return "CourseRecord [courseRecordId=" + courseRecordId + ", courseId=" + courseId + ", instructorId="
-				+ instructorId + ", studentId=" + studentId + "]";
+		return "CourseRecord [courseRecordId=" + courseRecordId + ", courseId=" + courseName + ", instructorId="
+				+ instructorName + ", studentId=" + studentId + "]";
 	}
-	
+
 }

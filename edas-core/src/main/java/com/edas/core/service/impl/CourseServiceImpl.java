@@ -35,10 +35,32 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public List<TbCourse> getCourses() {
-		
+
 		TbCourseExample example = new TbCourseExample();
-		
+
 		return courseMapper.selectByExample(example);
+	}
+
+	@Override
+	public String getCourseNameById(String courseId) {
+
+		TbCourse course = courseMapper.selectByPrimaryKey(courseId);
+		if (course != null) {
+			return course.getCourseName();
+		}
+
+		return null;
+	}
+
+	@Override
+	public TbCourse getCourseById(String courseId) {
+
+		TbCourse course = courseMapper.selectByPrimaryKey(courseId);
+		if (course != null) {
+			return course;
+		}
+
+		return null;
 	}
 
 }

@@ -10,6 +10,8 @@ public interface CourseRecordService {
 	public List<TbCourseRecord> getCourseRecordByInstructorId(String instructorId);
 
 	public List<TbCourseRecord> getCourseRecordByInstructorIdAndCourseId(String instructorId, String courseId);
+	
+	public List<TbCourseRecord> getCourseRecordByStudentId(String studentId);
 
 	public JsonResult insertCourseRecord(TbCourseRecord courseRecord);
 

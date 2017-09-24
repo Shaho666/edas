@@ -8,6 +8,8 @@ public interface InstructorService {
 	
 	public List<TbInstructor> getInstructors();
 	
+	public String getInstructorNameById(String instructorId);
+	
 	public TbInstructor validateInstructor(String instructorId, String instructorPassword);
 	
 }

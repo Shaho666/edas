@@ -57,4 +57,20 @@ public class CourseRecordImpl implements CourseRecordService {
 		return null;
 	}
 
+	@Override
+	public List<TbCourseRecord> getCourseRecordByStudentId(String studentId) {
+
+		TbCourseRecordExample example = new TbCourseRecordExample();
+
+		Criteria criteria = example.createCriteria();
+		criteria.andStudentIdEqualTo(studentId);
+
+		List<TbCourseRecord> list = courseRecordMapper.selectByExample(example);
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+
+		return null;
+	}
+
 }
