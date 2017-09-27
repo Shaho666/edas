@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.edas.commons.pojo.JsonResult;
 import com.edas.commons.utils.ExceptionUtil;
+import com.edas.commons.utils.JsonUtils;
 import com.edas.core.pojo.Instructor;
 import com.edas.core.service.InstructorService;
 import com.edas.core.service.PlaceService;
@@ -43,7 +44,9 @@ public class InstructorController {
 			return JsonResult.build(500, ExceptionUtil.getStackTrace(e));
 		}
 
-		return JsonResult.ok(instructor);
+		String json = JsonUtils.objectToJson(instructor);
+		
+		return JsonResult.ok(json);
 	}
 
 }

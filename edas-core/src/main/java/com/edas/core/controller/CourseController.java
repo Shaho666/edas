@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.edas.commons.pojo.JsonResult;
 import com.edas.commons.utils.ExceptionUtil;
+import com.edas.commons.utils.JsonUtils;
 import com.edas.core.pojo.Course;
 import com.edas.core.service.CourseService;
 import com.edas.core.service.CourseTypeService;
@@ -32,7 +33,8 @@ public class CourseController {
 			TbCourse tbCourse = courseService.getCourseById(courseId);
 			Course course = new Course(tbCourse, courseTypeService.getCourseTypeNameById(tbCourse.getCourseType()));
 
-			return JsonResult.ok(course);
+			String json = JsonUtils.objectToJson(course);
+			return JsonResult.ok(json);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

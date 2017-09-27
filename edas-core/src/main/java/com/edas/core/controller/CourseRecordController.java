@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.edas.commons.pojo.JsonResult;
 import com.edas.commons.utils.ExceptionUtil;
+import com.edas.commons.utils.JsonUtils;
 import com.edas.core.pojo.Course;
 import com.edas.core.pojo.CourseRecord;
 import com.edas.core.pojo.Student;
@@ -70,7 +71,9 @@ public class CourseRecordController {
 				courses.add(course);
 			}
 
-			return JsonResult.ok(courses);
+			String json = JsonUtils.objectToJson(courses);
+			
+			return JsonResult.ok(json);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -101,7 +104,9 @@ public class CourseRecordController {
 				students.add(student);
 			}
 
-			return JsonResult.ok(students);
+			String json = JsonUtils.objectToJson(students);
+			
+			return JsonResult.ok(json);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -123,7 +128,9 @@ public class CourseRecordController {
 				courseRecords.add(courseRecord);
 			}
 
-			return JsonResult.ok(courseRecords);
+			String json = JsonUtils.objectToJson(courseRecords);
+			
+			return JsonResult.ok(json);
 
 		} catch (Exception e) {
 			e.printStackTrace();
